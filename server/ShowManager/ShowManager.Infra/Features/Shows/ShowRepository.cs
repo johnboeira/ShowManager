@@ -1,4 +1,5 @@
 ﻿using ShowManager.Dominio.Features.Shows;
+using ShowManager.Infra.Shared;
 
 namespace ShowManager.Infra.Features.Shows;
 

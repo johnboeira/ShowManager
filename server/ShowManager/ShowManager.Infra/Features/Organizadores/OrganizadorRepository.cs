@@ -1,4 +1,5 @@
 ﻿using ShowManager.Dominio.Features.Organizadores;
+using ShowManager.Infra.Shared;
 
 namespace ShowManager.Infra.Features.Organizadores;
 
