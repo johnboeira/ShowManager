@@ -1,7 +1,6 @@
-﻿using Microsoft.VisualBasic;
-using ShowManager.Dominio.DTO;
+﻿using ShowManager.Dominio.DTO;
 using ShowManager.Dominio.Features.Usuarios;
-using ShowManager.Infra.DataBase.Repository.Usuarios;
+using ShowManager.Infra.Features.Usuarios;
 
 namespace ShowManager.Aplicacao.Features.Usuarios;
 
@@ -16,7 +15,6 @@ public class UsuarioService : IUsuarioService
 
     public async Task<Usuario> Atualizar(UsuarioEditarDTO usuarioEditarDTO, int id)
     {
-
         var usuario = new Usuario
         {
             Id = id,

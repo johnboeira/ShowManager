@@ -1,14 +1,12 @@
 ﻿using ShowManager.Dominio.DTO;
 using ShowManager.Dominio.Features.Shows;
-using ShowManager.Infra.DataBase.Repository.Shows;
-using ShowManager.Infra.DataBase.Repository.Usuarios;
+using ShowManager.Infra.Features.Shows;
 
 namespace ShowManager.Aplicacao.Features.Shows
 {
     public class ShowService : IShowService
     {
-
-        private readonly ShowRepository showRepository ;
+        private readonly ShowRepository showRepository;
 
         public async Task<Show> Atualizar(ShowEditarDTO showEditarDTO, int id)
         {
@@ -24,7 +22,6 @@ namespace ShowManager.Aplicacao.Features.Shows
                 Organizador = showEditarDTO.Organizador
             };
             return await showRepository.SaveAsync(show);
-           
         }
 
         public async Task<IEnumerable<Show>?> Buscar()
@@ -54,7 +51,6 @@ namespace ShowManager.Aplicacao.Features.Shows
 
         public async Task<int> Deletar(int id)
         {
-
             await showRepository.DeleteAsync(id);
             return id;
         }

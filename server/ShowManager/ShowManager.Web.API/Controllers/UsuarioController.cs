@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ShowManager.Web.API.Controllers;
 
@@ -7,5 +6,4 @@ namespace ShowManager.Web.API.Controllers;
 [ApiController]
 public class UsuarioController : ControllerBase
 {
-
 }

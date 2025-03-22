@@ -2,6 +2,6 @@
 
 namespace ShowManager.Dominio.Features.Shows;
 
-    public  interface IShowRepository : IRepository<Show>
+public interface IShowRepository : IRepository<Show>
 {
 }

@@ -1,11 +1,10 @@
 ﻿using ShowManager.Dominio.Features.Organizadores;
-using ShowManager.Infra.DataBase.Repository.Organizadores;
+using ShowManager.Infra.Features.Organizadores;
 
 namespace ShowManager.Aplicacao.Features.Organizadores;
 
 public class OrganizadorService : IOrganizador
 {
-
     private readonly OrganizadorRepository organizadoresRepository;
 
     public OrganizadorService(OrganizadorRepository organizadoresRepository)

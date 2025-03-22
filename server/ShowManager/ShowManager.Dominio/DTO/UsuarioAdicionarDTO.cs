@@ -1,6 +1,4 @@
-﻿
-
-using ShowManager.Dominio.Features.Usuarios;
+﻿using ShowManager.Dominio.Features.Usuarios;
 
 namespace ShowManager.Dominio.DTO;
 
