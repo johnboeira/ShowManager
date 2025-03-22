@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ShowManager.web.api.Controllers
+namespace ShowManager.Web.API.Features.Organizadores
 {
     [Route("api/[controller]")]
     [ApiController]

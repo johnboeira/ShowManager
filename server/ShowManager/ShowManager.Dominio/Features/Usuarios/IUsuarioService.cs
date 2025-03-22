@@ -1,17 +1,13 @@
-﻿using ShowManager.Dominio.DTO;
-
-namespace ShowManager.Dominio.Features.Usuarios
+﻿namespace ShowManager.Dominio.Features.Usuarios
 {
     public interface IUsuarioService
     {
-        Task<IEnumerable<Usuario>?> Buscar();
+        Task CriarAsync(Usuario usuario);
 
-        Task<Usuario?> BuscarPorID(int id);
+        Task<Usuario> BuscarPorIDAsync(int id);
 
-        Task<Usuario> Criar(UsuarioAdicionarDTO usuarioAdicionarDTO);
+        Task AtualizarAsync(Usuario usuarioAtualizado);
 
-        Task<int> Deletar(int id);
-
-        Task<Usuario> Atualizar(UsuarioEditarDTO usuarioEditarDTO);
+        Task DeletarAsync(int id);
     }
 }

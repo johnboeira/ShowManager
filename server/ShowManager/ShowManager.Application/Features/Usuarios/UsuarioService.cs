@@ -1,53 +1,45 @@
-﻿using ShowManager.Dominio.DTO;
-using ShowManager.Dominio.Features.Usuarios;
+﻿using ShowManager.Dominio.Features.Usuarios;
 using ShowManager.Infra.Features.Usuarios;
 
 namespace ShowManager.Aplicacao.Features.Usuarios;
 
-public class UsuarioService : IUsuarioService
+public class UsuarioService(UsuarioRepository _usuarioRepository) : IUsuarioService
 {
-    private readonly UsuarioRepository _usuarioRepository;
-
-    public UsuarioService(UsuarioRepository usuarioRepository)
+    public async Task CriarAsync(Usuario usuario)
     {
-        this._usuarioRepository = usuarioRepository;
+        await _usuarioRepository.Adicionar(usuario, true);
     }
 
-    public async Task<Usuario> Atualizar(UsuarioEditarDTO usuarioEditarDTO)
+    public async Task<Usuario> BuscarPorIDAsync(int id)
     {
-        var usuario = _usuarioRepository.GetByIdsAsync(usuarioEditarDTO.Id);
+        var usuario = await _usuarioRepository.BuscarPorIdAsync(id);
 
-        usuario.Atualizar(usuarioEditarDTO);
+        if (usuario is null)
+        {
+            //NotFound
+            throw new Exception();
+        }
+
+        return usuario;
+    }
+
+    public async Task AtualizarAsync(Usuario usuarioEditado)
+    {
+        var usuarioDoBanco = await BuscarPorIDAsync(usuarioEditado.Id);
+
+        usuarioDoBanco.AtualizarNome(usuarioEditado.Nome);
 
         await _usuarioRepository.SaveChangesAsync();
-        return usuarioAtualizado;
     }
 
-    public async Task<IEnumerable<Usuario>?> Buscar()
+    public async Task DeletarAsync(int id)
     {
-        return await _usuarioRepository.GetAllAsync();
-    }
+        var registrosDeletados = await _usuarioRepository.DeleteAsync(id);
 
-    public async Task<Usuario?> BuscarPorID(int id)
-    {
-        return await _usuarioRepository.GetByIdAsync(id);
-    }
-
-    public async Task<Usuario> Criar(UsuarioAdicionarDTO usuarioAdicionarDTO)
-    {
-        var usuario = new Usuario
+        if (registrosDeletados == 0)
         {
-            Nome = usuarioAdicionarDTO.Nome,
-            Email = usuarioAdicionarDTO.Email,
-            Senha = usuarioAdicionarDTO.Senha,
-            TipoUsuarioEnum = usuarioAdicionarDTO.TipoUsuarioEnum
-        };
-        return await _usuarioRepository.SaveAsync(usuario);
-    }
-
-    public async Task<int> Deletar(int id)
-    {
-        await _usuarioRepository.DeleteAsync(id);
-        return id;
+            //NotFound
+            throw new Exception();
+        }
     }
 }

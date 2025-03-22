@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace ShowManager.Infra.Shared;
 
-public class RepositoryBase<T> : IRepository<T> where T : Entidade
+public class RepositoryBase<T> where T : Entidade
 {
     protected DbSet<T> Query { get; set; }
     protected ShowManagerContext Context { get; set; }
@@ -15,7 +15,7 @@ public class RepositoryBase<T> : IRepository<T> where T : Entidade
         Query = Context.Set<T>();
     }
 
-    public async Task<T> GetByIdAsync(int id)
+    public async Task<T> BuscarPorId(int id)
     {
         return await Query.FindAsync(id);
     }

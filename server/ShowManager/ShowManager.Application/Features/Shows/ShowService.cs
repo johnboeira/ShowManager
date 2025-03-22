@@ -31,7 +31,7 @@ namespace ShowManager.Aplicacao.Features.Shows
 
         public Task<Show?> BuscarPorID(int id)
         {
-            return showRepository.GetByIdAsync(id);
+            return showRepository.BuscarPorId(id);
         }
 
         public async Task<Show> Criar(ShowAdicionarDTO showAdicionarDTO)

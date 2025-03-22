@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShowManager.Dominio.DTO;
 using ShowManager.Dominio.Features.Shows;
 
-namespace ShowManager.web.api.Controllers
+namespace ShowManager.Web.API.Features.Shows
 {
     [Route("api/[controller]")]
     [ApiController]
