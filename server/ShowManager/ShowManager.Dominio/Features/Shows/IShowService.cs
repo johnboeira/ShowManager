@@ -1,16 +1,14 @@
-﻿using ShowManager.Dominio.DTO;
-
-namespace ShowManager.Dominio.Features.Shows;
+﻿namespace ShowManager.Dominio.Features.Shows;
 
 public interface IShowService
 {
-    Task<Show> Criar(ShowAdicionarDTO showAdicionarDTO);
+    Task CriarAsync(Show show);
 
-    Task<int> Deletar(int id);
+    Task<Show> BuscarPorIDAsync(int id);
 
-    Task<Show> Atualizar(ShowEditarDTO showEditarDTO, int id);
+    Task<IEnumerable<Show>> BuscarTodos();
 
-    Task<IEnumerable<Show>?> Buscar();
+    Task AtualizarAsync(Show showAtualizado);
 
-    Task<Show?> BuscarPorID(int id);
+    Task DeletarAsync(int id);
 }
