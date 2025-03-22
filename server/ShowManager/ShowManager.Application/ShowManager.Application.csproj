@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShowManager.Dominio\ShowManager.Dominio.csproj" />
+    <ProjectReference Include="..\ShowManager.Infra\ShowManager.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
