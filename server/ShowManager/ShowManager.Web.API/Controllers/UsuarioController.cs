@@ -13,7 +13,6 @@ namespace ShowManager.web.api.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterTodos()
         {
-
             return Ok(await usuarioService.Buscar());
         }
 
@@ -21,7 +20,6 @@ namespace ShowManager.web.api.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterLista([FromRoute] int id)
         {
-
             return Ok(await usuarioService.BuscarPorID(id));
         }
 
@@ -29,24 +27,21 @@ namespace ShowManager.web.api.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-
             return Ok(await usuarioService.Deletar(id));
         }
 
-
         [Route("CriarUsuario")]
-        [HttpPost] 
+        [HttpPost]
         public async Task<IActionResult> Criar([FromBody] UsuarioAdicionarDTO usuarioAdicionarDTO)
         {
             return Ok(await usuarioService.Criar(usuarioAdicionarDTO));
         }
 
-
-        [Route("EditarUsuario/{id}")]
+        [Route("EditarUsuario")]
         [HttpPost]
-        public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO, int id)
+        public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
         {
-            return Ok(await usuarioService.Atualizar(usuarioEditarDTO, id));
+            return Ok(await usuarioService.Atualizar(usuarioEditarDTO));
         }
     }
 }

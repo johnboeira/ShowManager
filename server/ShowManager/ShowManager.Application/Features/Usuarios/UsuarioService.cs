@@ -13,17 +13,13 @@ public class UsuarioService : IUsuarioService
         this._usuarioRepository = usuarioRepository;
     }
 
-    public async Task<Usuario> Atualizar(UsuarioEditarDTO usuarioEditarDTO, int id)
+    public async Task<Usuario> Atualizar(UsuarioEditarDTO usuarioEditarDTO)
     {
-        var usuario = new Usuario
-        {
-            Id = id,
-            Nome = usuarioEditarDTO.Nome,
-            Email = usuarioEditarDTO.Email,
-            Senha = usuarioEditarDTO.Senha,
-            TipoUsuarioEnum = usuarioEditarDTO.TipoUsuarioEnum
-        };
-        var usuarioAtualizado = await _usuarioRepository.SaveAsync(usuario);
+        var usuario = _usuarioRepository.GetByIdsAsync(usuarioEditarDTO.Id);
+
+        usuario.Atualizar(usuarioEditarDTO);
+
+        await _usuarioRepository.SaveChangesAsync();
         return usuarioAtualizado;
     }
 

@@ -51,8 +51,7 @@ namespace ShowManager.Aplicacao.Features.Shows
 
         public async Task<int> Deletar(int id)
         {
-            await showRepository.DeleteAsync(id);
-            return id;
+            return await showRepository.DeleteAsync(id);
         }
     }
 }
