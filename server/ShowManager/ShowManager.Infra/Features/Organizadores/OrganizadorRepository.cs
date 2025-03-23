@@ -6,14 +6,19 @@ namespace ShowManager.Infra.Features.Organizadores;
 
 public class OrganizadorRepository : RepositoryBase<Organizador>, IOrganizadorRepository
 {
+    private readonly ShowManagerContext _context;
+
     public OrganizadorRepository(ShowManagerContext context) : base(context)
     {
+        _context = context;
     }
 
     public async Task<int> UpdateAsync(Organizador organizador)
     {
-        return await Context.Organizadores.ExecuteUpdateAsync(x =>
-            x.SetProperty(o => o.Apelido, organizador.Apelido)
+        return await _context.Organizadores.Where(o => o.Id == organizador.Id)
+            .ExecuteUpdateAsync(x =>
+                x.SetProperty(o => o.Apelido, organizador.Apelido)
+                .SetProperty(o => o.ListaShows, organizador.ListaShows)
         );
     }
 }

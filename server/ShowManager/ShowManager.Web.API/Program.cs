@@ -10,7 +10,8 @@ public class Program
 
         builder.Services.AddControllers();
 
-        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        builder.Services.AddAutoMapper(assemblies);
 
         var app = builder.Build();
 
