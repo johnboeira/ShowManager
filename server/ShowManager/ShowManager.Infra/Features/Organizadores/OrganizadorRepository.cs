@@ -21,4 +21,9 @@ public class OrganizadorRepository : RepositoryBase<Organizador>, IOrganizadorRe
         //.SetProperty(o => o.ListaShows, organizador.ListaShows)
         );
     }
+
+    public async Task<IEnumerable<Organizador>> BuscarTodos()
+    {
+        return await _context.Organizadores.ToListAsync();
+    }
 }
