@@ -3,37 +3,23 @@ using ShowManager.Infra.Features.Organizadores;
 
 namespace ShowManager.Aplicacao.Features.Organizadores;
 
-public class OrganizadorService : IOrganizador
+public class OrganizadorService : IOrganizadorService
 {
-    private readonly OrganizadorRepository organizadoresRepository;
+    private readonly OrganizadorRepository _organizadoresRepository;
 
     public OrganizadorService(OrganizadorRepository organizadoresRepository)
     {
-        this.organizadoresRepository = organizadoresRepository;
+        _organizadoresRepository = organizadoresRepository;
     }
 
-    public Task<string> Atulizar(Organizador organizador)
+    public async Task AtualizarAsync(Organizador organizadorAtualizado)
     {
-        throw new NotImplementedException();
-    }
+        var registrosAtualizados = await _organizadoresRepository.AtualizarAsync(organizadorAtualizado);
 
-    public Task<string> Buscar()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<string> BuscarPorID(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<string> Criar(Organizador organizador)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<string> Deletar(int id)
-    {
-        throw new NotImplementedException();
+        if (registrosAtualizados == 0)
+        {
+            //NotFound
+            throw new Exception();
+        }
     }
 }

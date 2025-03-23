@@ -23,20 +23,6 @@ public class ShowService(ShowRepository _showRepository) : IShowService
         return show;
     }
 
-    public async Task<IEnumerable<Show>> BuscarTodos()
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task AtualizarAsync(Show showAtualizado)
-    {
-        var showDoBanco = await BuscarPorIDAsync(showAtualizado.Id);
-
-        //Atualiza campos
-
-        await _showRepository.SaveChangesAsync();
-    }
-
     public async Task DeletarAsync(int id)
     {
         var registrosDeletados = await _showRepository.DeleteAsync(id);

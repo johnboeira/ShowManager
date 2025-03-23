@@ -13,12 +13,12 @@ public class OrganizadorRepository : RepositoryBase<Organizador>, IOrganizadorRe
         _context = context;
     }
 
-    public async Task<int> UpdateAsync(Organizador organizador)
+    public async Task<int> AtualizarAsync(Organizador organizador)
     {
         return await _context.Organizadores.Where(o => o.Id == organizador.Id)
             .ExecuteUpdateAsync(x =>
                 x.SetProperty(o => o.Apelido, organizador.Apelido)
-                .SetProperty(o => o.ListaShows, organizador.ListaShows)
+        //.SetProperty(o => o.ListaShows, organizador.ListaShows)
         );
     }
 }

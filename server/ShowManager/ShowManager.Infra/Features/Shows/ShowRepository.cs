@@ -1,39 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShowManager.Dominio.Features.Organizadores;
 using ShowManager.Dominio.Features.Shows;
 using ShowManager.Infra.Shared;
 
 namespace ShowManager.Infra.Features.Shows;
 
-public class ShowRepository(ShowManagerContext _context) : IShowRepository
+public class ShowRepository : RepositoryBase<Show>, IShowRepository
 {
-    public async Task Adicionar(Show show, bool saveChanges = false)
-    {
-        await _context.Shows.AddAsync(show);
+    private readonly ShowManagerContext _context;
 
-        if (saveChanges)
-        {
-            await SaveChangesAsync();
-        }
-    }
-
-    public async Task<Show?> BuscarPorIdAsync(int id)
+    public ShowRepository(ShowManagerContext context) : base(context)
     {
-        return await _context.Shows.SingleOrDefaultAsync(s => s.Id == id);
-    }
-
-    public async Task<IEnumerable<Show>> BuscarTodosAsync(int id)
-    {
-        return await _context.Shows.ToListAsync();
-    }
-
-    public async Task<int> DeleteAsync(int id)
-    {
-        return await _context.Shows.Where(x => x.Id == id)
-          .ExecuteDeleteAsync();
-    }
-
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
+        _context = context;
     }
 }

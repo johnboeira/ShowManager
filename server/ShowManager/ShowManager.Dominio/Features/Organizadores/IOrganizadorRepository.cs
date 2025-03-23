@@ -1,8 +1,8 @@
-﻿using ShowManager.Dominio.Features.Shared;
+﻿using ShowManager.Dominio.Shared;
 
 namespace ShowManager.Dominio.Features.Organizadores;
 
-public interface IOrganizadorRepository
+public interface IOrganizadorRepository : IRepositoryBase<Organizador>
 {
-    public Task<int> UpdateAsync(Organizador organizador);
+    public Task<int> AtualizarAsync(Organizador organizador);
 }

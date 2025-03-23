@@ -1,16 +1,9 @@
-﻿using ShowManager.Dominio.Features.Usuarios;
+﻿using ShowManager.Dominio.Features.Organizadores;
+using ShowManager.Dominio.Shared;
 
 namespace ShowManager.Dominio.Features.Shows;
 
-public interface IShowRepository
+public interface IShowRepository : IRepositoryBase<Show>
 {
-    Task Adicionar(Show show, bool saveChanges = false);
-
-    Task<Show?> BuscarPorIdAsync(int id);
-
-    Task<IEnumerable<Show>> BuscarTodosAsync(int id);
-
-    Task<int> DeleteAsync(int id);
-
-    Task SaveChangesAsync();
+    public Task<int> UpdateAsync(Show show);
 }
