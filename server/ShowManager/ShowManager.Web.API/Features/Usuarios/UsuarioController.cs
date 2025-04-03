@@ -7,13 +7,13 @@ namespace ShowManager.Web.API.Features.Usuarios;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UsuarioController(IUsuarioService usuarioService, IMapper _mapper) : ControllerBase
+public class UsuarioController(IUsuarioService usuarioService, IMapper mapper) : ControllerBase
 {
     [Route("CriarUsuario")]
     [HttpPost]
     public async Task<IActionResult> Criar([FromBody] UsuarioAdicionarDTO usuarioAdicionarDTO)
     {
-        var usuario = _mapper.Map<Usuario>(usuarioAdicionarDTO);
+        var usuario = mapper.Map<Usuario>(usuarioAdicionarDTO);
 
         await usuarioService.CriarAsync(usuario);
 
@@ -33,7 +33,7 @@ public class UsuarioController(IUsuarioService usuarioService, IMapper _mapper) 
     [HttpPost]
     public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
     {
-        var usuario = _mapper.Map<Usuario>(usuarioEditarDTO);
+        var usuario = mapper.Map<Usuario>(usuarioEditarDTO);
 
         await usuarioService.AtualizarAsync(usuario);
 

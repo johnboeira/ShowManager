@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace ShowManager.Web.API;
 
 public class Program
@@ -12,6 +14,9 @@ public class Program
 
         var assemblies = AppDomain.CurrentDomain.GetAssemblies();
         builder.Services.AddAutoMapper(assemblies);
+
+        //var assembly = AppDomain.CurrentDomain.Load("CQRS_Example.Application");
+        builder.Services.AddMediatR(assemblies);
 
         var app = builder.Build();
 
