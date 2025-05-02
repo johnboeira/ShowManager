@@ -10,4 +10,9 @@ public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
     public UsuarioRepository(ShowManagerContext _context) : base(_context)
     {
     }
+
+    public async Task<int> UpdateAsync(Usuario usuario)
+    {
+        throw new NotImplementedException();
+    }
 }

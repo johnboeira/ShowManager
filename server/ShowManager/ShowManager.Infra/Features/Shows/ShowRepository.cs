@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShowManager.Dominio.Features.Organizadores;
-using ShowManager.Dominio.Features.Shows;
+﻿using ShowManager.Dominio.Features.Shows;
 using ShowManager.Infra.Shared;
 
 namespace ShowManager.Infra.Features.Shows;
 
-public class ShowRepository : RepositoryBase<Show>, IShowRepository
+public class ShowRepository : RepositoryBase<Show>
 {
     private readonly ShowManagerContext _context;
 

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShowManager.Dominio\ShowManager.Dominio.csproj" />
+    <ProjectReference Include="..\ShowManager.Exceptions\ShowManager.Exceptions.csproj" />
     <ProjectReference Include="..\ShowManager.Infra\ShowManager.Infra.csproj" />
   </ItemGroup>
 

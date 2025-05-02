@@ -3,7 +3,7 @@ using ShowManager.Infra.Features.Organizadores;
 
 namespace ShowManager.Aplicacao.Features.Organizadores;
 
-public class OrganizadorService : IOrganizadorService
+public class OrganizadorService
 {
     private readonly OrganizadorRepository _organizadoresRepository;
 

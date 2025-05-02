@@ -3,7 +3,7 @@ using ShowManager.Infra.Features.Shows;
 
 namespace ShowManager.Aplicacao.Features.Shows;
 
-public class ShowService(ShowRepository _showRepository) : IShowService
+public class ShowService(ShowRepository _showRepository)
 {
     public async Task CriarAsync(Show show)
     {

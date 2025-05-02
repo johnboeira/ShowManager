@@ -1,45 +1,58 @@
-﻿using ShowManager.Dominio.Features.Usuarios;
-using ShowManager.Infra.Features.Usuarios;
+﻿//using ShowManager.Dominio.Features.Usuarios;
+//using ShowManager.Exceptions.Excecoes;
+//using ShowManager.Infra.Features.Usuarios;
 
-namespace ShowManager.Aplicacao.Features.Usuarios;
+//namespace ShowManager.Aplicacao.Features.Usuarios;
 
-public class UsuarioService(UsuarioRepository _usuarioRepository) : IUsuarioService
-{
-    public async Task CriarAsync(Usuario usuario)
-    {
-        await _usuarioRepository.Adicionar(usuario, true);
-    }
+//public class UsuarioService : IUsuarioService
+//{
+//    private readonly UsuarioRepository _usuarioRepository;
 
-    public async Task<Usuario> BuscarPorIDAsync(int id)
-    {
-        var usuario = await _usuarioRepository.BuscarPorIdAsync(id);
+//    public UsuarioService(UsuarioRepository usuarioRepository)
+//    {
+//        _usuarioRepository = usuarioRepository;
+//    }
 
-        if (usuario is null)
-        {
-            //NotFound
-            throw new Exception();
-        }
+//    public async Task CriarAsync(Usuario usuario)
+//    {
+//        await _usuarioRepository.Adicionar(usuario, true);
+//    }
 
-        return usuario;
-    }
+//    public async Task<Usuario> BuscarPorIDAsync(int id)
+//    {
+//        var usuario = await _usuarioRepository.BuscarPorIdAsync(id);
 
-    public async Task AtualizarAsync(Usuario usuarioEditado)
-    {
-        var usuarioDoBanco = await BuscarPorIDAsync(usuarioEditado.Id);
+//        if (usuario is null)
+//        {
+//            //NotFound
+//            throw new Exception();
+//        }
 
-        usuarioDoBanco.AtualizarNome(usuarioEditado.Nome);
+//        return usuario;
+//    }
 
-        await _usuarioRepository.SaveChangesAsync();
-    }
+//    public async Task AtualizarAsync(Usuario usuarioEditado)
+//    {
+//        var usuarioDoBanco = await BuscarPorIDAsync(usuarioEditado.Id);
 
-    public async Task DeletarAsync(int id)
-    {
-        var registrosDeletados = await _usuarioRepository.DeleteAsync(id);
+//        if (usuarioDoBanco is null)
+//        {
+//            throw new NaoEncontradoExcecao($"Usuário não encontrado, id: {usuarioEditado.Id}");
+//        }
 
-        if (registrosDeletados == 0)
-        {
-            //NotFound
-            throw new Exception();
-        }
-    }
-}
+//        usuarioDoBanco.AtualizarNome(usuarioEditado.Nome);
+
+//        await _usuarioRepository.SaveChangesAsync();
+//    }
+
+//    public async Task DeletarAsync(int id)
+//    {
+//        var registrosDeletados = await _usuarioRepository.DeleteAsync(id);
+
+//        if (registrosDeletados == 0)
+//        {
+//            //NotFound
+//            throw new Exception();
+//        }
+//    }
+//}
