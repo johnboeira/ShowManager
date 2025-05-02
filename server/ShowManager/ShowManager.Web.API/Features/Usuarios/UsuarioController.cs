@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using ShowManager.Dominio.DTO;
 using ShowManager.Dominio.Features.Usuarios;
+using ShowManager.Exceptions.Excecoes;
 
 namespace ShowManager.Web.API.Features.Usuarios;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UsuarioController(IUsuarioService usuarioService, IMapper mapper) : ControllerBase
+public class UsuarioController(IMapper mapper) : ControllerBase
 {
     [Route("CriarUsuario")]
     [HttpPost]
@@ -15,27 +16,29 @@ public class UsuarioController(IUsuarioService usuarioService, IMapper mapper) :
     {
         var usuario = mapper.Map<Usuario>(usuarioAdicionarDTO);
 
-        await usuarioService.CriarAsync(usuario);
+        //await usuarioService.CriarAsync(usuario);
 
         return Ok();
     }
 
-    [Route("ObterPorID/{id}")]
-    [HttpGet]
-    public async Task<IActionResult> ObterPorId([FromRoute] int id)
-    {
-        var usuario = await usuarioService.BuscarPorIDAsync(id);
+    //[Route("ObterPorID/{id}")]
+    //[HttpGet]
+    //public async Task<IActionResult> ObterPorId([FromRoute] int id)
+    //{
+    //    //var usuario = await usuarioService.BuscarPorIDAsync(id);
 
-        return Ok(usuario);
-    }
+    //    return Ok(usuario);
+    //}
 
     [Route("EditarUsuario")]
-    [HttpPost]
+    [HttpPut]
     public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
     {
+        throw new NaoEncontradoExcecao($"Usuário não encontrado, id: {usuarioEditarDTO.Id}");
+
         var usuario = mapper.Map<Usuario>(usuarioEditarDTO);
 
-        await usuarioService.AtualizarAsync(usuario);
+        //await usuarioService.AtualizarAsync(usuario);
 
         return Ok();
     }
@@ -44,7 +47,7 @@ public class UsuarioController(IUsuarioService usuarioService, IMapper mapper) :
     [HttpDelete]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        await usuarioService.DeletarAsync(id);
+        //await usuarioService.DeletarAsync(id);
 
         return Ok();
     }
