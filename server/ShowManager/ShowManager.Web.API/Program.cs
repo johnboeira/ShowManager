@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShowManager.Aplicacao.Features.Organizadores;
 using ShowManager.Aplicacao.Features.Shows;
+using ShowManager.Application.Features.Usuarios;
 using ShowManager.Dominio.Features.Organizadores;
 using ShowManager.Dominio.Features.Shows;
 using ShowManager.Dominio.Features.Usuarios;
@@ -36,8 +37,7 @@ public class Program
         var assemblies = AppDomain.CurrentDomain.GetAssemblies();
         builder.Services.AddAutoMapper(assemblies);
 
-        //var assembly = AppDomain.CurrentDomain.Load("CQRS_Example.Application");
-        builder.Services.AddMediatR(assemblies);
+        builder.Services.AddMediatR(typeof(UsuarioCriar.Handler).Assembly);
 
         builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroParaExcecoes)));
 

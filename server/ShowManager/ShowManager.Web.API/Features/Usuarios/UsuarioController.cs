@@ -1,27 +1,22 @@
-﻿using AutoMapper;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ShowManager.Dominio.DTO;
-using ShowManager.Dominio.Features.Usuarios;
-using ShowManager.Exceptions.Excecoes;
+using ShowManager.Application.Features.Usuarios;
 
 namespace ShowManager.Web.API.Features.Usuarios;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UsuarioController(IMapper mapper) : ControllerBase
+public class UsuarioController(IMediator mediator) : ControllerBase
 {
-    [Route("CriarUsuario")]
     [HttpPost]
-    public async Task<IActionResult> Criar([FromBody] UsuarioAdicionarDTO usuarioAdicionarDTO)
+    public async Task<IActionResult> Criar([FromBody] UsuarioCriar.Command command)
     {
-        var usuario = mapper.Map<Usuario>(usuarioAdicionarDTO);
-
-        //await usuarioService.CriarAsync(usuario);
+        await mediator.Send(command);
 
         return Ok();
     }
 
-    //[Route("ObterPorID/{id}")]
+    //[Route("{id}")]
     //[HttpGet]
     //public async Task<IActionResult> ObterPorId([FromRoute] int id)
     //{
@@ -30,25 +25,24 @@ public class UsuarioController(IMapper mapper) : ControllerBase
     //    return Ok(usuario);
     //}
 
-    [Route("EditarUsuario")]
-    [HttpPut]
-    public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
-    {
-        throw new NaoEncontradoExcecao($"Usuário não encontrado, id: {usuarioEditarDTO.Id}");
+    //[HttpPut]
+    //public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
+    //{
+    //    throw new NaoEncontradoExcecao($"Usuário não encontrado, id: {usuarioEditarDTO.Id}");
 
-        var usuario = mapper.Map<Usuario>(usuarioEditarDTO);
+    //    var usuario = mapper.Map<Usuario>(usuarioEditarDTO);
 
-        //await usuarioService.AtualizarAsync(usuario);
+    //    //await usuarioService.AtualizarAsync(usuario);
 
-        return Ok();
-    }
+    //    return Ok();
+    //}
 
-    [Route("Delete/{id}")]
-    [HttpDelete]
-    public async Task<IActionResult> Delete([FromRoute] int id)
-    {
-        //await usuarioService.DeletarAsync(id);
+    //[Route("{id}")]
+    //[HttpDelete]
+    //public async Task<IActionResult> Delete([FromRoute] int id)
+    //{
+    //    //await usuarioService.DeletarAsync(id);
 
-        return Ok();
-    }
+    //    return Ok();
+    //}
 }

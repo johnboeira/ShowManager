@@ -25,10 +25,5 @@ public class UsuarioEntityConfiguration : IEntityTypeConfiguration<Usuario>
            .HasMaxLength(200)
            .HasColumnType("nvarchar(200)")
            .IsRequired();
-
-        builder.Property(o => o.TipoUsuarioEnum)
-            .HasConversion<string>()  // Converte o enum para string
-            .HasMaxLength(50) // Define um tamanho máximo para a string
-            .IsRequired();
     }
 }

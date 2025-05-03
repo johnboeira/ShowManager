@@ -8,6 +8,6 @@ public class UsuarioProfile : Profile
 {
     public UsuarioProfile()
     {
-        CreateMap<UsuarioCriarCommand, Usuario>();
+        CreateMap<UsuarioCriar.Command, Usuario>();
     }
 }
