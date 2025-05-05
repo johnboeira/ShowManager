@@ -1,15 +1,9 @@
 using MediatR;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using ShowManager.Aplicacao.Features.Organizadores;
-using ShowManager.Aplicacao.Features.Shows;
+using ShowManager.Application.Extensions;
 using ShowManager.Application.Features.Usuarios;
-using ShowManager.Dominio.Features.Organizadores;
-using ShowManager.Dominio.Features.Shows;
 using ShowManager.Dominio.Features.Usuarios;
-using ShowManager.Infra.Features.Organizadores;
-using ShowManager.Infra.Features.Shows;
+using ShowManager.Infra.Extensions;
 using ShowManager.Infra.Features.Usuarios;
 using ShowManager.Infra.Shared;
 using ShowManager.Web.API.Filters;
@@ -31,13 +25,10 @@ public class Program
         builder.Services.AddDbContext<ShowManagerContext>(options =>
             options.UseSqlServer(connectionString));
 
-        // Registrando os repositórios
-        builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-
-        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-        builder.Services.AddAutoMapper(assemblies);
-
         builder.Services.AddMediatR(typeof(UsuarioCriar.Handler).Assembly);
+
+        builder.Services.AddInfra();
+        builder.Services.AddIApplication();
 
         builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroParaExcecoes)));
 
