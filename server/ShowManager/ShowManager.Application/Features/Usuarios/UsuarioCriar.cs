@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using ShowManager.Dominio.Features.Usuarios;
-using ShowManager.Infra.Features.Usuarios;
 
 namespace ShowManager.Application.Features.Usuarios;
 

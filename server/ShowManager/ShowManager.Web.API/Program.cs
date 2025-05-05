@@ -19,16 +19,8 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllers();
 
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-        // Adicionando o DbContext com SQL Server
-        builder.Services.AddDbContext<ShowManagerContext>(options =>
-            options.UseSqlServer(connectionString));
-
-        builder.Services.AddMediatR(typeof(UsuarioCriar.Handler).Assembly);
-
-        builder.Services.AddInfra();
-        builder.Services.AddIApplication();
+        builder.Services.AddInfra(builder.Configuration);
+        builder.Services.AddApplication();
 
         builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroParaExcecoes)));
 
