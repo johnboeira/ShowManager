@@ -9,7 +9,7 @@ namespace ShowManager.Infra.Extensions;
 
 public static class InjecaoDeDependenciaExtensions
 {
-    public static void AddInfra(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfraData(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 

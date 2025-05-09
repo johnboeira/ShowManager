@@ -20,6 +20,7 @@ public class Program
         builder.Services.AddControllers();
 
         builder.Services.AddInfra(builder.Configuration);
+        builder.Services.AddInfraData(builder.Configuration);
         builder.Services.AddApplication();
 
         builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroParaExcecoes)));

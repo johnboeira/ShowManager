@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ShowManager.Dominio.Features.Usuarios;
-using ShowManager.Infra.Features.Usuarios;
-using ShowManager.Infra.Shared;
+using ShowManager.Infra.Criptografia;
 
 namespace ShowManager.Infra.Extensions;
 
@@ -11,11 +8,8 @@ public static class InjecaoDeDependenciaExtensions
 {
     public static void AddInfra(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var chaveAdicional = configuration.GetValue<string>("Settings:Password:AdditionalKey");
 
-        services.AddDbContext<ShowManagerContext>(options =>
-            options.UseSqlServer(connectionString));
-
-        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        services.AddScoped(opt => new SenhaEncriptador(chaveAdicional!));
     }
 }
