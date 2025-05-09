@@ -1,5 +1,5 @@
 ﻿using ShowManager.Dominio.Features.Shows;
-using ShowManager.Infra.Features.Shows;
+using ShowManager.Infra.Data.Features.Shows;
 
 namespace ShowManager.Aplicacao.Features.Shows;
 

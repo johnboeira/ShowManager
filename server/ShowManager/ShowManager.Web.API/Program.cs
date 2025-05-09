@@ -4,7 +4,7 @@ using ShowManager.Application.Extensions;
 using ShowManager.Application.Features.Usuarios;
 using ShowManager.Dominio.Features.Usuarios;
 using ShowManager.Infra.Extensions;
-using ShowManager.Infra.Features.Usuarios;
+using ShowManager.Infra.Data.Features.Usuarios;
 using ShowManager.Infra.Shared;
 using ShowManager.Web.API.Filters;
 

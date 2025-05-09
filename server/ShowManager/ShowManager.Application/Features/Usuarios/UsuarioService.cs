@@ -1,6 +1,6 @@
 ﻿//using ShowManager.Dominio.Features.Usuarios;
 //using ShowManager.Exceptions.Excecoes;
-//using ShowManager.Infra.Features.Usuarios;
+//using ShowManager.Infra.Data.Features.Usuarios;
 
 //namespace ShowManager.Aplicacao.Features.Usuarios;
 

@@ -1,5 +1,5 @@
 ﻿using ShowManager.Dominio.Features.Organizadores;
-using ShowManager.Infra.Features.Organizadores;
+using ShowManager.Infra.Data.Features.Organizadores;
 
 namespace ShowManager.Aplicacao.Features.Organizadores;
 
