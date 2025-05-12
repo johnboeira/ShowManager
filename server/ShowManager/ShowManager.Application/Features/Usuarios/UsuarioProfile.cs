@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ShowManager.Dominio.DTO;
 using ShowManager.Dominio.Features.Usuarios;
 
 namespace ShowManager.Application.Features.Usuarios;

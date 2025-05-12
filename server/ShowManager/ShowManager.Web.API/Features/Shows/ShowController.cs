@@ -5,7 +5,7 @@ namespace ShowManager.Web.API.Features.Shows
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ShowController(IShowService showService) : ControllerBase
+    public class ShowController() : ControllerBase
     {
     }
 }

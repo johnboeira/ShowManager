@@ -20,4 +20,9 @@
     <ProjectReference Include="..\ShowManager.Infra\ShowManager.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Organizadores\" />
+    <Folder Include="Features\Shows\" />
+  </ItemGroup>
+
 </Project>
