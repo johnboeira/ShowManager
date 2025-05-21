@@ -11,7 +11,8 @@ public static class InjecaoDeDependenciaExtensions
 {
     public static void AddInfraData(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var connectionString = configuration.GetConnectionString("DefaultConnection")
+            ?? throw new InvalidOperationException("Connection string não encontrada!"); ;
 
         services.AddDbContext<ShowManagerContext>(options =>
             options.UseSqlServer(connectionString));

@@ -8,7 +8,8 @@ public static class InjecaoDeDependenciaExtensions
 {
     public static void AddInfra(this IServiceCollection services, IConfiguration configuration)
     {
-        var chaveAdicional = configuration.GetValue<string>("Settings:Password:AdditionalKey");
+        var chaveAdicional = configuration.GetValue<string>("Settings:Password:AdditionalKey")
+            ?? throw new InvalidOperationException("Connection string não encontrada!");
 
         services.AddScoped(opt => new SenhaEncriptador(chaveAdicional!));
     }
