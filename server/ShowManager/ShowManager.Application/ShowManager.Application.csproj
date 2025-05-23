@@ -7,13 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR"/>
-	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection"/>
+    <PackageReference Include="MediatR" />
+	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
 	<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
 
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShowManager.Contracts\ShowManager.Contracts.csproj" />
     <ProjectReference Include="..\ShowManager.Dominio\ShowManager.Dominio.csproj" />
     <ProjectReference Include="..\ShowManager.Exceptions\ShowManager.Exceptions.csproj" />
     <ProjectReference Include="..\ShowManager.Infra.Data\ShowManager.Infra.Data.csproj" />

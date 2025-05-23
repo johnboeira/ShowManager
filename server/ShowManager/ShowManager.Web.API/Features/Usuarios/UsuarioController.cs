@@ -16,14 +16,14 @@ public class UsuarioController(IMediator mediator) : ControllerBase
         return Ok();
     }
 
-    //[Route("{id}")]
-    //[HttpGet]
-    //public async Task<IActionResult> ObterPorId([FromRoute] int id)
-    //{
-    //    //var usuario = await usuarioService.BuscarPorIDAsync(id);
+    [Route("{id:int}")]
+    [HttpGet]
+    public async Task<IActionResult> ObterPorId([FromRoute] int id)
+    {
+        var resultado = await mediator.Send(new BuscaUsuarioPorId.Query);
 
-    //    return Ok(usuario);
-    //}
+        return Ok(resultado);
+    }
 
     //[HttpPut]
     //public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
