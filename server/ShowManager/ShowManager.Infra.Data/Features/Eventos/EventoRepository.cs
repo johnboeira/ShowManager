@@ -3,11 +3,11 @@ using ShowManager.Infra.Shared;
 
 namespace ShowManager.Infra.Data.Features.Shows;
 
-public class ShowRepository : RepositoryBase<Show>
+public class EventoRepository : RepositoryBase<Evento>
 {
     private readonly ShowManagerContext _context;
 
-    public ShowRepository(ShowManagerContext context) : base(context)
+    public EventoRepository(ShowManagerContext context) : base(context)
     {
         _context = context;
     }

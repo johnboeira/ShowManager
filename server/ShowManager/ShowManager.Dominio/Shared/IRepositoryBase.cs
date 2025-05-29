@@ -1,6 +1,4 @@
-﻿using ShowManager.Dominio.Features.Shared;
-
-namespace ShowManager.Dominio.Shared;
+﻿namespace ShowManager.Dominio.Shared;
 
 public interface IRepositoryBase<T> where T : Entidade
 {

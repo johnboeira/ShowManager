@@ -1,4 +1,4 @@
-﻿using ShowManager.Dominio.Features.Shared;
+﻿using ShowManager.Dominio.Shared;
 
 namespace ShowManager.Dominio.Features.Usuarios;
 

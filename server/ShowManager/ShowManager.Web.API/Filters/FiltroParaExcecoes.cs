@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using ShowManager.Exceptions.Shared;
 using ShowManager.Exceptions.Excecoes;
+using FluentValidation;
 
 namespace ShowManager.Web.API.Filters;
 
@@ -29,7 +30,19 @@ public class FiltroParaExcecoes : IExceptionFilter
 
     private void LancaExcecaoNaoTratada(ExceptionContext context)
     {
-        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-        context.Result = new ObjectResult(context.Exception.Message);
+        if (context.Exception is ValidationException validationException)
+        {
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            context.Result = new ObjectResult(validationException.Errors.Select(e => new
+            {
+                Campo = e.PropertyName,
+                Erro = e.ErrorMessage
+            }));
+        }
+        else
+        {
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Result = new ObjectResult(context.Exception.Message);
+        }
     }
 }

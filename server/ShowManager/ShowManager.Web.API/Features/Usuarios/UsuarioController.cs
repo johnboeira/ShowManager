@@ -20,7 +20,7 @@ public class UsuarioController(IMediator mediator) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ObterPorId([FromRoute] int id)
     {
-        var resultado = await mediator.Send(new BuscaUsuarioPorId.Query);
+        var resultado = await mediator.Send(new BuscaUsuarioPorId.Query());
 
         return Ok(resultado);
     }

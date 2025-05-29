@@ -16,5 +16,23 @@ public class OrganizadorEntityConfiguration : IEntityTypeConfiguration<Organizad
             .HasMaxLength(200)
             .HasColumnType("nvarchar(200)")
             .IsRequired();
+
+        // FK para Usuario
+        builder.HasOne(o => o.Usuario)
+            .WithMany()
+            .HasForeignKey(o => o.UsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // FK para Documento
+        builder.HasOne(o => o.Documento)
+            .WithMany()
+            .HasForeignKey("DocumentoId")
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Relacionamento com Eventos
+        builder.HasMany(o => o.ListaEventos)
+            .WithOne(e => e.Organizador)
+            .HasForeignKey(e => e.OrganizadorId);
     }
 }

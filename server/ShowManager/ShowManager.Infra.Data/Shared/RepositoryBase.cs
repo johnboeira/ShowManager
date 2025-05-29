@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShowManager.Dominio.Features.Shared;
 using ShowManager.Dominio.Shared;
 
 namespace ShowManager.Infra.Shared;

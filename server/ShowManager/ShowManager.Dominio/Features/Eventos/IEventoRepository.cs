@@ -3,7 +3,7 @@ using ShowManager.Dominio.Shared;
 
 namespace ShowManager.Dominio.Features.Shows;
 
-public interface IShowRepository : IRepositoryBase<Show>
+public interface IEventoRepository : IRepositoryBase<Evento>
 {
-    public Task<int> UpdateAsync(Show show);
+    public Task<int> UpdateAsync(Evento show);
 }

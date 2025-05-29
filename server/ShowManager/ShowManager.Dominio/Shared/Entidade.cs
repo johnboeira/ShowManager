@@ -1,4 +1,4 @@
-﻿namespace ShowManager.Dominio.Features.Shared;
+﻿namespace ShowManager.Dominio.Shared;
 
 public class Entidade
 {

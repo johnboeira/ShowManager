@@ -22,8 +22,8 @@ public class UsuarioEntityConfiguration : IEntityTypeConfiguration<Usuario>
            .IsRequired();
 
         builder.Property(o => o.Senha)
-           .HasMaxLength(200)
-           .HasColumnType("nvarchar(200)")
+           .HasMaxLength(400)
+           .HasColumnType("nvarchar(400)")
            .IsRequired();
     }
 }
