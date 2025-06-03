@@ -4,5 +4,5 @@ namespace ShowManager.Dominio.Features.Usuarios;
 
 public interface IUsuarioRepository : IRepositoryBase<Usuario>
 {
-    public Task<int> UpdateAsync(Usuario usuario);
+    public Task<int> AtualizarAsync(Usuario usuario);
 }

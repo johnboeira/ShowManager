@@ -5,14 +5,15 @@ using ShowManager.Infra.Shared;
 
 namespace ShowManager.Infra.Data.Features.Usuarios;
 
-public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
+public class UsuarioRepository(ShowManagerContext _context) : RepositoryBase<Usuario>(_context), IUsuarioRepository
 {
-    public UsuarioRepository(ShowManagerContext _context) : base(_context)
+    public async Task<int> AtualizarAsync(Usuario usuario)
     {
-    }
-
-    public async Task<int> UpdateAsync(Usuario usuario)
-    {
-        throw new NotImplementedException();
+        return await _context.Usuarios
+            .Where(u => u.Id == usuario.Id)
+            .ExecuteUpdateAsync(setters => setters
+                .SetProperty(u => u.Nome, u => usuario.Nome)
+                .SetProperty(u => u.Email, u => usuario.Email)
+                .SetProperty(u => u.Senha, u => usuario.Senha));
     }
 }

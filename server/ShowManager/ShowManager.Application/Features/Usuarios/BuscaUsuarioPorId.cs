@@ -13,13 +13,16 @@ public class BuscaUsuarioPorId
     {
         public int Id { get; set; }
 
+        public Query(int id)
+        {
+            Id = id;
+        }
+
         public class Validator : AbstractValidator<Query>
         {
             public Validator()
             {
-                //RuleFor(x => x.Id)
-                //    .NotEmpty().WithMessage("Nome é obrigatório.")
-                //    .MaximumLength(100).WithMessage("Nome pode ter no máximo 100 caracteres.");
+                RuleFor(x => x.Id).NotNull();
             }
         }
     }

@@ -20,22 +20,18 @@ public class UsuarioController(IMediator mediator) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ObterPorId([FromRoute] int id)
     {
-        var resultado = await mediator.Send(new BuscaUsuarioPorId.Query());
+        var resultado = await mediator.Send(new BuscaUsuarioPorId.Query(id));
 
         return Ok(resultado);
     }
 
-    //[HttpPut]
-    //public async Task<IActionResult> Editar([FromBody] UsuarioEditarDTO usuarioEditarDTO)
-    //{
-    //    throw new NaoEncontradoExcecao($"Usuário não encontrado, id: {usuarioEditarDTO.Id}");
+    [HttpPut]
+    public async Task<IActionResult> Editar([FromBody] UsuarioEditar.Command command)
+    {
+        var resultado = await mediator.Send(command);
 
-    //    var usuario = mapper.Map<Usuario>(usuarioEditarDTO);
-
-    //    //await usuarioService.AtualizarAsync(usuario);
-
-    //    return Ok();
-    //}
+        return Ok(resultado);
+    }
 
     //[Route("{id}")]
     //[HttpDelete]
